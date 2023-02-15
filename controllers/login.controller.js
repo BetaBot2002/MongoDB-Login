@@ -25,4 +25,32 @@ const registerUser=(req,res,next)=>{
     })
 }
 
-module.exports={registerForm,registerUser}
+const loginform=(req,res,next)=>{
+    if(req.session.user) res.redirect('/home')
+    else{
+        res.render('pages/loginForm',{
+            title:'login'
+        })
+    }
+}
+
+const login=(req,res,next)=>{
+    if(!req.session.user){
+        User.find({
+            username:req.body.username,
+            password:req.body.password
+        }).then(response=>{
+            if(response.length>0){
+                req.session.user=req.body.username
+                res.redirect('/home')
+            }else{
+                res.redirect('/login')
+            }
+        })
+    }else{
+        res.redirect('/home')
+    }
+
+}
+
+module.exports={registerForm,registerUser,loginform,login}
