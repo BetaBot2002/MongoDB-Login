@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <title>
+        <%= title %>
+    </title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
 </head>
-<body>
-    <form action="/register" method="post">
-        <input type="text" name="username" id="" placeholder="Enter the username" required>
-        <input type="password" name="password" id="" placeholder="Enter the password" required>
-        <button type="submit">Register</button>
-    </form>
+
+<body class="flex flex-col items-center justify-center p-5 h-screen bg-slate-400">
+    
+    <%if(message){%>
+        <p class="pop">
+            <%=message%>
+        </p>
+        <%}%>
+        <h1 class="pb-5 font-bold text-3xl text-black"> <%= title %></h1>
+        <div class="w-[300px]">
+            <form action="/register" method="post" class="bg-sky-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <label class="block text-black text-sm font-bold mb-2" for="username">
+                    Username:
+                </label>
+                <input type="text" name="username" id="" placeholder="Enter the username" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-blue-600 focus:shadow-outline mb-2" required>
+                <label class="block text-black text-sm font-bold mb-2" for="password">
+                    Password:
+                </label>
+                <input type="password" name="password" id="" placeholder="Enter the password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-blue-600 focus:shadow-outline mb-2" required >
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Register</button>
+            </form>
+        </div>
 </body>
+<script>
+    let msg=document.querySelector('.pop')
+    setTimeout(()=>{
+        msg.classList.add('hide')
+    },5000)
+</script>
+
 </html>

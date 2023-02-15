@@ -2,7 +2,8 @@ const User=require('../models/user.model.js');
 
 const registerForm=(req,res,next)=>{
     res.render('pages/register',{
-        title:'Register'
+        title:'Register',
+        message:''
     });
 }
 
@@ -14,14 +15,15 @@ const registerUser=(req,res,next)=>{
     })
 
     userData.save().then(response=>{
-        res.json({
-            message:'User Added',
-            username:req.body.username
-        })
+        res.render('pages/register',{
+            title:'Register',
+            message:`User Added: ${req.body.username}`
+        });
     }).catch(error=>{
-        res.json({
+        res.render('pages/register',{
+            title:'Register',
             message:error
-        })
+        });
     })
 }
 
