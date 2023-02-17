@@ -37,12 +37,14 @@ const loginform=(req,res,next)=>{
 }
 
 const login=(req,res,next)=>{
+    // console.log(req.body.remember)
     if(!req.session.user){
         User.find({
             username:req.body.username,
             password:req.body.password
         }).then(response=>{
             if(response.length>0){
+                // if(req.body.remember=='on')
                 req.session.user=req.body.username
                 res.redirect('/home')
             }else{
