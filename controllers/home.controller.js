@@ -1,5 +1,9 @@
 const User=require('../models/user.model.js');
 
+const redirectHome=(req,res,next)=>{
+    res.redirect('/home');
+}
+
 const home=(req,res,next)=>{
     if(!req.session.user) res.redirect('/login')
     else{
@@ -10,4 +14,4 @@ const home=(req,res,next)=>{
     }
 }
 
-module.exports={home}
+module.exports={redirectHome,home}

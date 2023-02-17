@@ -9,6 +9,7 @@ router.post('/register',login.registerUser);
 router.get('/login',login.loginform);
 router.post('/login',login.login);
 
+router.get('/',home.redirectHome);
 router.get('/home',home.home);
 
 module.exports=router;
