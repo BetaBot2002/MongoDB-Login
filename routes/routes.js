@@ -8,6 +8,7 @@ router.get('/register',login.registerForm);
 router.post('/register',login.registerUser);
 router.get('/login',login.loginform);
 router.post('/login',login.login);
+router.get('/logout',login.logout);
 
 router.get('/',home.redirectHome);
 router.get('/home',home.home);

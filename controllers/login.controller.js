@@ -57,4 +57,13 @@ const login=(req,res,next)=>{
 
 }
 
-module.exports={registerForm,registerUser,loginform,login}
+const logout=(req,res,next)=>{
+    if(req.session.user){
+        req.session.destroy();
+        res.redirect('/login')
+    }else{
+        res.redirect('/home')
+    }
+}
+
+module.exports={registerForm,registerUser,loginform,login,logout}
